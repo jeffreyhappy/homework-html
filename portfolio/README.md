@@ -1,4 +1,3 @@
-# homework-html
-前端的家庭作业/homework from https://www.freecodecamp.cn
-
-portfolio - 作品集
+# 我的作品集
+效果如下
+![效果][https://github.com/jeffreyhappy/homework-html/blob/master/portfolio/img/screenshot.png]
