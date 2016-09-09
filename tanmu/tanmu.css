@@ -1,0 +1,48 @@
+.dm_holder{
+  border: 1px solid rgb(229, 229, 229) ;
+  margin:20px 30px;
+  height:300px;
+}
+
+#input_dm{
+  height:34px;
+  width:320px;
+  border:1px solid rgb(229, 229, 229);
+  border-radius:4px;
+  padding-left:10px;
+}
+.dm_input{
+  text-align:center;
+}
+
+.dm_action{
+  text-align:center;
+  margin-top:20px;
+}
+
+.dm_action input{
+  height:40px;
+  width:140px;
+  background-color:white;
+  font-size:1em;
+}
+
+
+#input_send{
+  border:1px solid red;
+  border-radius:4px;
+}
+
+#input_clear{
+  border:1px solid green;
+  border-radius:4px;
+}
+.dm_msg{
+  position: absolute;;
+}
+/*.dm_screen{
+  width: 100%;
+}
+.dm .dm_screen .dm_msg{
+  position: absolute;
+}*/
