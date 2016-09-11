@@ -1,13 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
+import CountApp from './components/CountApp';
 import './index.css';
-import Counter from './components/Counter.js'
 
-ReactDOM.render(
-  <App store={store}/>,
-  document.getElementById('root')
-);
+import {createStore} from 'redux';
+
 
 function counter(state=0,action){
   switch (action.type) {
@@ -25,9 +22,14 @@ function counter(state=0,action){
 let store = createStore(counter);
 
 store.subscribe(()=>{
-  // console.log(store.getState());
+  console.log("store subscribe " + require('util').inspect(store, { depth: null }));
   ReactDOM.render(
-    <App store={store}/>,
+    <CountApp store={store}/>,
     document.getElementById('root')
   );
 })
+
+ReactDOM.render(
+  <CountApp store={store}/>,
+  document.getElementById('root')
+);

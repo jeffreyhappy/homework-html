@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
-import {createStore} form 'redux';
+import logo from '../logo.svg';
+import '../App.css';
+import Counter from './Counter.js'
 
-
-
-class App extends Component {
+class CountApp extends Component {
   render() {
+    console.log("app log  " + require('util').inspect(this.props,{depth:3}));
+    var store = this.props.store;
     return (
       <div className="App">
         <div className="App-header">
@@ -17,13 +17,15 @@ class App extends Component {
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
         <Counter
-          value={this.props.store.getState}
+          value={store.getState()}
           onIncrement={()=>{
-            this.props.store.dispatch({type:'INCREASE'})
+            console.log("app log onIncrement " + require('util').inspect(store,{depth:3}));
+            store.dispatch({type:'INCREASE'})
           }}
           onDecrement={()=>{
-            this.props.store.dispatch({type:'DECREMENT'})
+            store.dispatch({type:'DECREMENT'})
           }}/>
+
       </div>
     );
   }
@@ -33,4 +35,4 @@ class App extends Component {
 
 
 
-export default App;
+export default CountApp;
