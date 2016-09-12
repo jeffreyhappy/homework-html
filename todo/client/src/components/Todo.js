@@ -1,10 +1,10 @@
-import React ,{Component,PropTypes} from 'React'
+import React ,{Component,PropTypes} from 'react'
 
 class Todo extends Component{
   render(){
     console.log("Todo text = " + this.props.text);
     return(
-      <li>
+      <li className="list-group-item" style={this.props.style}  onClick={this.props.onClick}>
         {this.props.text}
       </li>
     )

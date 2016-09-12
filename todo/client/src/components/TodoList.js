@@ -1,16 +1,24 @@
-import React ,{Component,PropTypes} from 'React'
+import React ,{Component,PropTypes} from 'react'
 import Todo from './Todo.js';
 
 
 class TodoList extends Component{
+
+
   render(){
+    console.log("TodoList render " + require('util').inspect(this.props, { depth: null }));
     return(
-      <ul>
+      <ul className="list-group marginTop20">
         {this.props.todos.map((todo,index)=>{
-          console.log("todo map " + todo.text);
           return (<Todo {...todo}
                 key={index}
-                onClick={this.props.onTodoClick} />)
+                onClick={()=>{
+                  this.props.onTodoClick(index)
+                }}
+                style={{
+                  textDecoration: todo.completed ? 'line-through' : 'none',
+                  cursor:todo.completed ? 'default':'pointer'}}
+                />)
         })}
       </ul>
     )

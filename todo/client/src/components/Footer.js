@@ -1,4 +1,7 @@
-import React ,{Component,PropTypes} from 'React';
+import React ,{Component,PropTypes} from 'react';
+import {VisibilityFilters} from '../actions/TodoAction.js'
+
+
 
 class Footer extends Component{
   renderFilterItem(filter ,name){
@@ -15,13 +18,13 @@ class Footer extends Component{
 
   render(){
     return (
-      <div>
+      <div     className="marginTop20">
         显示:
-        {this.renderFilterItem('SHOW_ALL','所有')}
+        {this.renderFilterItem(VisibilityFilters.SHOW_ALL,'所有')}
         {','}
-        {this.renderFilterItem('SHOW_COMPLETE','已完成')}
+        {this.renderFilterItem(VisibilityFilters.SHOW_COMPLETE,'已完成')}
         {','}
-        {this.renderFilterItem('SHOW_ACTIVIE','活动总')}
+        {this.renderFilterItem(VisibilityFilters.SHOW_ACTIVE,'活动中')}
       </div>
     )
   }
@@ -30,7 +33,7 @@ class Footer extends Component{
 Footer.propTypes={
   onFilterChange:PropTypes.func.isRequired,
   filter:PropTypes.oneOf([
-    'SHOW_ALL',"SHOW_COMPLETE","SHOW_ACTIVIE"
+    VisibilityFilters.SHOW_ALL,VisibilityFilters.SHOW_COMPLETE,VisibilityFilters.SHOW_ACTIVE
   ]).isRequired
 }
 

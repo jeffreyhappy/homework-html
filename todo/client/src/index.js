@@ -1,15 +1,33 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import ReactDOM,{render} from 'react-dom';
 import TodoApp from './components/TodoApp';
-import './index.css';
+import './css/TodoApp.css';
 
-import {createStore} from 'redux';
+import {createStore ,applyMiddleware } from 'redux';
+import {Provider} from 'react-redux';
+import todoAppReducers from './reducers/reducers'
+import createLogger from 'redux-logger'
 
 
-ReactDOM.render(
-  <TodoApp />,
-  document.getElementById('root')
-);
+let rootElement = document.getElementById('root');
+
+const loggerMiddleware = createLogger()
+const createStoreWithMiddleware = applyMiddleware(
+  loggerMiddleware
+)(createStore)
+
+
+let store = createStoreWithMiddleware(todoAppReducers);
+render(
+  <Provider store={store}>
+    <TodoApp />
+  </Provider>,
+  rootElement
+)
+// ReactDOM.render(
+//   <TodoApp />,
+//   document.getElementById('root')
+// );
 
 //这里是todo的
 // function counter(state=0,action){

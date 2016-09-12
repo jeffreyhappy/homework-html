@@ -1,0 +1,22 @@
+.marginTop50{
+  margin-top: 50px;
+}
+.marginTop20{
+  margin-top: 20px;
+}
+.title{
+  font-size: 2em;
+  color: red;
+}
+.right{
+  float: right;
+}
+.clear{
+  clear: both;
+}
+
+.bottom-txt{
+  font-size: 0.5em;
+  color:gray;
+  margin-top: 20px;
+}
