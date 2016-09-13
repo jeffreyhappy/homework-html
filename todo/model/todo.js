@@ -31,6 +31,40 @@ function saveTodo(userid,text ,callback) {
     });
 
 }
+
+function all(userid,callback){
+  var connection = mysql.createConnection(dbProfile);
+  connection.connect(function (e) {
+      if (e){
+          connection.end();
+          console.log("connect err " + e);
+          return;
+      }
+  });
+  var strQuerySql = util.format('select * from table_todo where userid = \'%s\' ',userid);
+  connection.query(strQuerySql, function(err, rows) {
+      if (err) {
+          connection.end();
+          callback(err);
+          return;
+      }
+      var todoList = new Array();
+
+        for (var i = 0 ; i < rows.length ; i ++){
+            todoList.push({
+                name:rows[i].text,
+                completed:false
+            })
+        }
+
+      callback(null,todoList);
+      console.log('The solution is: ', util.inspect(rows));
+      connection.end();
+
+      // console.log('The solution fields is: ', util.inspect(fields));
+  });
+
+}
 module.exports = function () {
     this.saveTodo = saveTodo
 };

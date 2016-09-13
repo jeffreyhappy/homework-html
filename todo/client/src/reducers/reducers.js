@@ -1,6 +1,6 @@
 import {combineReducers} from 'redux'
 
-import  {ADD_TODO,COMPLETE_TODO,TOGGLE_TODO,SET_VISIBILITY_FILTER,VisibilityFilters} from '../actions/TodoAction.js'
+import  {ADD_TODO,TODO_FETCH,COMPLETE_TODO,TOGGLE_TODO,SET_VISIBILITY_FILTER,VisibilityFilters} from '../actions/TodoAction.js'
 // import {SHOW_ALL} = VisibilityFilters;
 
 function visibilityFilter(state ,action){
@@ -41,11 +41,22 @@ function todos(state=[],action){
           }),
           ...state.slice(action.index+1)
         ]
-
+      case TODO_FETCH:
+       return [...state,Array.prototype.slice.call(action.todos)];
       default:
       return state;
     }
-  }
+}
+
+// function todosFetch(state=[],action){
+//   switch (action.type) {
+//     case TODO_FETCH:
+//       return state;
+//     default:
+//       return state;
+//   }
+// }
+
 const todoAppReducers = combineReducers({
   visibilityFilter,
   todos

@@ -63,4 +63,35 @@ router.get('/asyctodo',function(req,res,next){
   }
 
 })
+
+
+router.get('/asyctodo/all',function(req,res,next){
+  var userid = req.query.user;
+
+  console.log("/asyctodo/all  user= " + userid );
+  if (text == undefined || text == '') {
+    res.json({
+      result:'error',
+      msg:'请输入userid'
+    })
+    return;
+  }
+
+  var todo = require('../model/todo');
+  var todoModel = new todo();
+  todoModel.all(userid,function(err,todos){
+    if (err) {
+      res.json({
+        result:'error'
+      })
+    }else {
+      res.json({
+        result:'ok',
+        todos:todos
+      })
+    }
+  })
+})
+
+
 module.exports = router;

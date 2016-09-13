@@ -1,11 +1,14 @@
 import React ,{Component,PropTypes} from 'react'
-import {addTodo ,addTodoAsync,completeTodo,toggleTodo,setVisibilityFilter,VisibilityFilters} from '../actions/TodoAction';
+import {addTodo ,addTodoAsync,completeTodo,preloadTodo,toggleTodo,setVisibilityFilter,VisibilityFilters} from '../actions/TodoAction';
 import AddTodo from './AddTodo'
 import TodoList from './TodoList'
 import Footer from './Footer'
 import { connect } from 'react-redux'
 
 class TodoApp extends Component{
+  componentDidMount(){
+        this.props.dispatch(preloadTodo())
+  }
   render(){
     const {dispatch,visibleTodos,visibilityFilter}  = this.props;
     return (
@@ -82,5 +85,7 @@ function select(state){
     visibilityFilter:state.visibilityFilter
   }
 }
+
+
 
 export default connect(select)(TodoApp);
