@@ -52,7 +52,7 @@ function all(userid,callback){
 
         for (var i = 0 ; i < rows.length ; i ++){
             todoList.push({
-                name:rows[i].text,
+                text:rows[i].text,
                 completed:false
             })
         }
@@ -66,5 +66,6 @@ function all(userid,callback){
 
 }
 module.exports = function () {
-    this.saveTodo = saveTodo
+    this.saveTodo = saveTodo,
+    this.all      = all
 };

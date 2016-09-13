@@ -1,5 +1,5 @@
 import React ,{Component,PropTypes} from 'react'
-import {addTodo ,addTodoAsync,completeTodo,preloadTodo,toggleTodo,setVisibilityFilter,VisibilityFilters} from '../actions/TodoAction';
+import {addTodo ,addTodoAsync,completeTodo,preloadTodoAsyc,toggleTodo,setVisibilityFilter,VisibilityFilters} from '../actions/TodoAction';
 import AddTodo from './AddTodo'
 import TodoList from './TodoList'
 import Footer from './Footer'
@@ -7,7 +7,7 @@ import { connect } from 'react-redux'
 
 class TodoApp extends Component{
   componentDidMount(){
-        this.props.dispatch(preloadTodo())
+        this.props.dispatch(preloadTodoAsyc())
   }
   render(){
     const {dispatch,visibleTodos,visibilityFilter}  = this.props;

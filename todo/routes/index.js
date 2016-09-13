@@ -18,7 +18,8 @@ router.get('/asyctodo',function(req,res,next){
     return;
   }
 
-  if (userid == undefined || userid=="") {
+  if (userid == undefined || userid=="" || userid =='undefined') {
+    console.log("userid undefined");
     var user = require('../model/user');
     var userModel = new user();
     userModel.generateUser(function(err,info){
@@ -66,10 +67,10 @@ router.get('/asyctodo',function(req,res,next){
 
 
 router.get('/asyctodo/all',function(req,res,next){
-  var userid = req.query.user;
+  var userid = req.query.userid;
 
   console.log("/asyctodo/all  user= " + userid );
-  if (text == undefined || text == '') {
+  if (userid == undefined || userid == '') {
     res.json({
       result:'error',
       msg:'请输入userid'

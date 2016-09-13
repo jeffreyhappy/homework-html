@@ -52,7 +52,10 @@ export function addTodoAsync(text){
   console.log("addTodoAsync start");
   return dispatch =>{
     var userid = Cookies.get('todo_user');
-    var paramsId =  userid == undefined ? '': ('&user='+userid);
+    var paramsId ="";
+    if(userid != undefined && userid != 'undefined'){
+      paramsId ='&user='+userid;
+    }
     return fetch('http://localhost:3333/asyctodo?text=' + text +paramsId)
           .then(response=>{
             console.log("addTodoAsync middle" + require('util').inspect(response, { depth: null }));
@@ -66,11 +69,11 @@ export function addTodoAsync(text){
   }
 }
 
-export function preloadTodo(){
+export function preloadTodoAsyc(){
   console.log("asyctodo/all start");
   return dispatch =>{
     var userid = Cookies.get('todo_user');
-    if (userid == undefined) {
+    if (userid == undefined || userid=='undefined') {
       return null;
     }else {
       return fetch('http://localhost:3333/asyctodo/all?userid='+userid)

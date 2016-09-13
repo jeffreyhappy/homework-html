@@ -42,7 +42,7 @@ function todos(state=[],action){
           ...state.slice(action.index+1)
         ]
       case TODO_FETCH:
-       return [...state,Array.prototype.slice.call(action.todos)];
+       return [...state].concat(Array.prototype.slice.call(action.todos));
       default:
       return state;
     }
