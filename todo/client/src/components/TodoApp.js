@@ -1,5 +1,5 @@
 import React ,{Component,PropTypes} from 'react'
-import {addTodo ,completeTodo,toggleTodo,setVisibilityFilter,VisibilityFilters} from '../actions/TodoAction';
+import {addTodo ,addTodoAsync,completeTodo,toggleTodo,setVisibilityFilter,VisibilityFilters} from '../actions/TodoAction';
 import AddTodo from './AddTodo'
 import TodoList from './TodoList'
 import Footer from './Footer'
@@ -15,7 +15,7 @@ class TodoApp extends Component{
             <div className="title">TODOS</div>
             <AddTodo onAddClick={text=>{
               console.log("AddTodo onAddClick");
-              dispatch(addTodo(text));
+              dispatch(addTodoAsync(text));
             }}/>
             <TodoList
               todos = {visibleTodos}

@@ -7,12 +7,13 @@ import {createStore ,applyMiddleware } from 'redux';
 import {Provider} from 'react-redux';
 import todoAppReducers from './reducers/reducers'
 import createLogger from 'redux-logger'
-
+import thunk from 'redux-thunk'
 
 let rootElement = document.getElementById('root');
 
 const loggerMiddleware = createLogger()
 const createStoreWithMiddleware = applyMiddleware(
+  thunk,
   loggerMiddleware
 )(createStore)
 

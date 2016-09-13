@@ -39,3 +39,24 @@ export function toggleTodo(index){
 export function setVisibilityFilter(filter) {
   return { type: SET_VISIBILITY_FILTER, filter }
 }
+
+import fetch from 'isomorphic-fetch'
+import Cookies from 'js-cookie'
+
+export function addTodoAsync(text){
+  console.log("addTodoAsync start");
+  return dispatch =>{
+    var userid = Cookies.get('todo_user');
+    var paramsId =  userid == undefined ? '': ('&user='+userid);
+    return fetch('http://localhost:3333/asyctodo?text=' + text +paramsId)
+          .then(response=>{
+            console.log("addTodoAsync middle" + require('util').inspect(response, { depth: null }));
+            return response.json();
+          })
+          .then(value=>{
+            console.log("addTodoAsync end" + require('util').inspect(value, { depth: null }));
+            Cookies.set('todo_user', value.userid, { expires: 30 });
+            dispatch(addTodo(value.text));
+          })
+  }
+}
