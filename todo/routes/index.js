@@ -30,7 +30,7 @@ router.get('/asyctodo',function(req,res,next){
       }else {
         var todo = require('../model/todo');
         var todoModel = new todo();
-        todoModel.saveTodo(info.userid,text,function(err){
+        todoModel.saveTodo(info.userid,text,function(err,insertTodo){
           if (err) {
             res.json({
               err:err.toString()
@@ -38,8 +38,7 @@ router.get('/asyctodo',function(req,res,next){
           }else {
             res.json({
               result:'ok',
-              userid:info.userid,
-              text:text
+              todo:insertTodo
             })
           }
         })
@@ -48,7 +47,7 @@ router.get('/asyctodo',function(req,res,next){
   }else{
     var todo = require('../model/todo');
     var todoModel = new todo();
-    todoModel.saveTodo(userid,text,function(err){
+    todoModel.saveTodo(userid,text,function(err,insertTodo){
       if (err) {
         res.json({
           err:err.toString()
@@ -56,8 +55,7 @@ router.get('/asyctodo',function(req,res,next){
       }else {
         res.json({
           result:'ok',
-          userid:userid,
-          text:text
+          todo:insertTodo
         })
       }
     })
@@ -78,7 +76,10 @@ router.get('/asyctodo/all',function(req,res,next){
     return;
   }
 
+  console.log("/asyctodo/all  start require ");
   var todo = require('../model/todo');
+
+  console.log("/asyctodo/all  end require  " );
   var todoModel = new todo();
   todoModel.all(userid,function(err,todos){
     if (err) {
@@ -93,6 +94,31 @@ router.get('/asyctodo/all',function(req,res,next){
     }
   })
 })
+router.get('/asyctodo/toggle',function(req,res,next){
+  var todoId = req.query.todoId;
 
+  console.log("/asyctodo/all  user= " + todoId );
+  if (todoId == undefined || todoId == '') {
+    res.json({
+      result:'error',
+      msg:'请输入todoId'
+    })
+    return;
+  }
+
+  var todo = require('../model/todo');
+  var todoModel = new todo();
+  todoModel.toggle(todoId,function(err){
+    if (err) {
+      res.json({
+        result:'error'
+      })
+    }else {
+      res.json({
+        result:'ok',
+      })
+    }
+  })
+})
 
 module.exports = router;

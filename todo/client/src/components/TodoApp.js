@@ -1,5 +1,5 @@
 import React ,{Component,PropTypes} from 'react'
-import {addTodo ,addTodoAsync,completeTodo,preloadTodoAsyc,toggleTodo,setVisibilityFilter,VisibilityFilters} from '../actions/TodoAction';
+import {addTodo ,addTodoAsync,toggleTodoAsyc,completeTodo,preloadTodoAsyc,toggleTodo,setVisibilityFilter,VisibilityFilters} from '../actions/TodoAction';
 import AddTodo from './AddTodo'
 import TodoList from './TodoList'
 import Footer from './Footer'
@@ -22,9 +22,9 @@ class TodoApp extends Component{
             }}/>
             <TodoList
               todos = {visibleTodos}
-              onTodoClick={index=>{
-                console.log('todo click = ' + index);
-                dispatch(toggleTodo(index))
+              onTodoClick={(index,todoId)=>{
+                console.log('todo click = ' + todoId);
+                dispatch(toggleTodoAsyc(index,todoId))
               }}
             />
             <div className="bottom-txt"> 点击条目，可以完成该todo</div>

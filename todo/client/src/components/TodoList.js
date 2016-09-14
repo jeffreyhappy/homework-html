@@ -13,7 +13,7 @@ class TodoList extends Component{
           return (<Todo {...todo}
                 key={index}
                 onClick={()=>{
-                  this.props.onTodoClick(index)
+                  this.props.onTodoClick(index,todo.id)
                 }}
                 style={{
                   textDecoration: todo.completed ? 'line-through' : 'none',
