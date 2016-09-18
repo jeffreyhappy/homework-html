@@ -8,3 +8,18 @@ ReactDOM.render(
   <App />,
   document.getElementById('root')
 );
+
+
+// //参考
+// <Provider store={store}>
+//      <Router history={history}>
+//         <Route path="/" component={Header}>
+//             <IndexRoute component={MainContainer} />
+//             <Route path="buy" component={Buy}/>
+//             <Route path="actives" component={Inbox}/>
+//           <Route path='user' component={LoginResister} >
+//             <Route path=":id" component={LoginResister} onEnter={userAuth} />
+//           </Route>
+//         </Route>
+//       </Router>
+//   </Provider>,
