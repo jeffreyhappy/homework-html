@@ -1,0 +1,19 @@
+include head
+script(src='../javascripts/login.js')
+body
+  .container
+    .row
+      form.col-md-6.col-md-offset-3.login_form
+        .form-group.form_item
+          label(for='user_name') 用户名
+          br
+          input.form_control#user_name(type='text',placeholder='用户名')
+        .form-group.form_item
+          label 密码
+          br
+          input.form_control#user_psw(type='password',placeholder='密码')
+        //button#btn-login.btn.btn-default(type='submit') 登录
+        button#btn-login.btn.btn-primary(type='button') 登录
+  p#login_log 日志
+  p#login_result 结果
+    

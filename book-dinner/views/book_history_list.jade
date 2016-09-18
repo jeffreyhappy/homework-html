@@ -1,0 +1,21 @@
+doctype html
+//- include head_weui.jade
+include head
+script(src='../javascripts/today_list.js')
+body
+  .container
+    .row(style={background:'#89bf04' ,padding: '14px'})
+      input#name(placeholder='你的名字' style={float: 'right', width: '100px',margin:'10px'} )
+      span#tv_name(style={float:'right',margin:'10px'})
+
+    .row
+      .col-md-6.col-md-offset-3(style={padding:'14px'})
+          .top_left.bold 订餐历史
+          .top_right.bold today #{today}
+          .clear
+          if users.length == 0
+              #empty 今天还没有人订餐
+          ul.user_book_list(style={clear:'both',padding:'10px'})
+            each user in users
+              li=  user.name + user.time
+

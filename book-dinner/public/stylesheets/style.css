@@ -1,0 +1,94 @@
+body {
+  /*width: 800px;*/
+  margin: auto;
+  /*font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;*/
+}
+
+a {
+  color: #00B7FF;
+}
+
+.top_left{
+  float: left;
+  /*position: relative;*/
+}
+
+.top_right{
+  float: right;
+  height: 80px;
+  /*justify-content:center;//子元素水平居中
+align-items:center;//子元素垂直居中
+display:-webkit-flex;*/
+}
+
+.login_form{
+  padding-top: 15px;
+  padding-bottom: 15px;
+  padding-left: 15px;
+  padding-right: 15px;
+  box-shadow:0px 0px 0px 1px black;
+  background: white;
+  border-radius: 0.2em;
+  position: relative;
+  text-align: left;
+}
+
+.form_item{
+  display: block;
+  margin: 10px 0px 10px 0px;
+  clear: both;
+}
+input{
+  width:100%;
+}
+
+
+
+hr{
+  clear:both;
+}
+
+#btn-login{
+  width: 100%;
+}
+
+#login_log {
+  text-align: center;
+}
+
+#login_result {
+  text-align: center;
+}
+
+.center{
+  text-align: center;
+}
+
+.provider_left{
+  box-shadow:0px 0px 0px 1px #00A5D6;
+  background: #00A5D6;
+  border-radius: 0.2em;
+}
+
+.clear{
+  clear: both;
+}
+#empty{
+  margin-top: 20px;
+  font-size: 20px;
+  color: #0bb20c;
+}
+
+.bold{
+  font-weight: bold;
+}
+
+.text_left{
+  text-align: left;
+}
+.text_right{
+  text-align: right;
+}
+.size20{
+  font-size:20px;
+}

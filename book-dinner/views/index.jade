@@ -1,0 +1,53 @@
+extends layout
+
+block content
+  h1= title
+  p Welcome to #{title}
+  ul.classul
+    li li1
+    li li2
+    li li3
+    li li4
+  input(type="input" name="name" value="名字")
+  .link(style={color:'red',background:'green'})
+    .link_child
+      p 在里面
+      p 在下面
+
+
+
+  p
+    | 文本文本文本文本文本
+    | 文本文本文本文本文本
+    | 文本文本文本文本文本
+    | 文本文本文本文本文本
+  p.
+    多行文本
+    多行文本
+    多行文本
+    多行文本
+    多行文本
+
+
+  - for(var x = 0 ; x < 3 ; x++)
+    li <a>x</>
+
+  -var theGreat = "<span>escape!</span>";
+  p this is safe :#{theGreat}
+  p this is safe :!{theGreat}
+
+
+  -var user={description:null}
+  -var authorised = true
+  #user
+      if user.description
+        h2 Description
+        p.description=user.description
+      else if authorised
+        h2 Description
+        p.description.
+          User has not Description,
+          why not add...
+      else
+        h2 Description
+        p.description not authorised

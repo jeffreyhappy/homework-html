@@ -1,0 +1,49 @@
+doctype html
+//- include head_weui.jade
+include head
+script(src='../javascripts/today_list.js')
+body
+  .topbar(style={background:'#89bf04' ,padding: '14px'})
+    .container
+      .row
+        button.btn.btn-normal#btn_name(type='button' style={float:'right'}) 确定
+        input#name(placeholder='你的名字' style={float: 'right', width: '100px',margin:'10px'} )
+        button.btn.btn-warning#btn_clear(type='button' style={float: 'right'}) 切换名字
+        span#tv_name(style={float:'right',margin:'10px'})
+  .content
+    .container
+      .row
+        .col-md-6.col-md-offset-3(style={padding:'14px'})
+            .row(style={position:'relative',height:'80px'})
+              h1.top_left.bold 今日订餐
+                if users.length != 0
+                  span.size20 (今天有#{users.length}人订餐)
+              .top_right.bold.text_bottom 
+                div(style={position:'relative',top:'50%'}) today #{today}
+              .clear
+            if users.length == 0
+                #empty 今天还没有人订餐
+            else
+              ul.user_book_list(style={clear:'both',padding:'10px'})
+                table(style={border:'1px',width:'100%'})
+                  tr
+                    th.text_left(align='left' ) 名字
+                    th.text_right(align='right' ) 时间
+                  each user in users
+                    tr
+                      td.list_name(align='left')
+                        a=  user.name
+                      td(align='right')
+                        p=  user.time
+      .row
+        .col-md-6.col-md-offset-3
+          //
+              .book_description 我今天订饭
+          div
+            button.btn.btn-primary#btn-book(type='button') 今天订饭
+          div
+            button.btn.btn-primary#btn-unbook(type='button' style={background:"#89bf04"}) 取消订饭
+      //
+          .row
+              .col-md-6.col-md-offset-3
+                #log #{debugLog}
