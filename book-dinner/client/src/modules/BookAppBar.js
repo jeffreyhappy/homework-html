@@ -1,13 +1,14 @@
 import React from 'react'
 import AppBar from 'material-ui/AppBar';
 import FlatButton from 'material-ui/FlatButton';
-
+import {Link} from 'react-router'
+import {isEmpty} from '../utils/isEmpty'
 export default React.createClass({
     render(){
       const {user} = this.props;
-      console.log(require('util').inspect(user, { depth: null }));
+      console.log('BookAppBar' + require('util').inspect(user, { depth: null }));
       let div
-      if (user != null && user != {} && user != undefined) {
+      if (!isEmpty(user)) {
         div = (
           <div>
             {user.name}
@@ -17,7 +18,7 @@ export default React.createClass({
       }else {
         div = (
           <div>
-            <FlatButton label="登录"/>
+            <Link to='/login'><FlatButton label="登录"/></Link>
           </div>
         )
       }

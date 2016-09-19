@@ -25,6 +25,25 @@
 .Text_left{
   text-align: left;
 }
+.radius_box{
+  border: 1px solid #BDBDBD;
+  border-radius: 4px;
+}
+.login_box{
+  border: 1px solid #BDBDBD;
+  border-radius: 4px;
+  width:400px;
+  margin: 0px auto;
+  padding:20px;
+  margin-top: 50px;
+  text-align: center;
+}
+.marginTop50{
+  margin-top: 50px;
+}
+.marginTop20{
+  margin-top: 20px;
+}
 
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }

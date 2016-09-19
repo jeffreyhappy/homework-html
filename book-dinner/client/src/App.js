@@ -10,44 +10,20 @@ import {initTodayDataAsyc} from './actions/BookAction'
 
 class App extends Component {
 
-  componentDidMount(){
-    console.log("App componentDidMount")
-    this.props.dispatch(initTodayDataAsyc())
-  }
+
 
   render() {
-    const {user ,todayList} = this.props;
+    // const {user ,todayList} = this.props;
+    var test= {};
+  
     return (
       <MuiThemeProvider>
-        <div className="App">
-          <BookAppBar user = {user}/>
-          <BookList todayList = {todayList}/>
-          <BottomBtn />
-        </div>
+        {this.props.children}
       </MuiThemeProvider>
     );
   }
 }
 
-App.propTypes = {
-  user:PropTypes.shape({
-    name:PropTypes.string.isRequired,
-    icon:PropTypes.string.isRequired
-  }).isRequired,
-  todayList:PropTypes.arrayOf(PropTypes.shape({
-    name:PropTypes.string.isRequired,
-    time:PropTypes.string.isRequired,
-    icon:PropTypes.string.isRequired,
-  }).isRequired).isRequired
-}
-
-function connectFilter(state){
-  console.log('connectFilter' + require('util').inspect(state, { depth: null }));
-  return {
-    user:state == undefined?{}:state.user,
-    todayList:state == undefined ?[] :state.todayList
-  }
-}
 
 // todayList:[
 //   {
@@ -66,4 +42,4 @@ function connectFilter(state){
 //     time:'1990:00:00'
 //   }
 // ]
-export default connect(connectFilter)(App);
+export default connect()(App);

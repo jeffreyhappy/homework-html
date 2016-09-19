@@ -83,4 +83,37 @@ router.get('/today_list/unbook',function(req,res,next){
     })
 });
 
+
+router.get('/login',function(req,res,next){
+  console.log('user name '+req.query.username);
+  console.log('user psw '+req.query.psw);
+  var username = req.query.username;
+  var user = require('../model/user.js');
+  var userModel = new  user();
+    userModel.findByUserName(username,function (err,userObj) {
+      if(err){
+        res.send({result:'fail',msg:err.toString()})
+        console.log('user operate err' + err);
+      }else {
+          if (userObj == null){
+              res.send({result:'ok',code:1,msg:'用户名或密码错误'});
+              return;
+          }
+          var loginName = username;
+          var loginPsw = req.query.psw;
+          if (loginName == userObj.userName && loginPsw == userObj.userPsw){
+              //产生token 放入redis
+              var token = moment().format('YYYY-MM-DD-hh:mm:ss')+loginName;
+              // client.set(token,userObj.id);
+              userObj.token = token;
+              res.send({result:'ok',code :0,data:userObj});
+          }else{
+              res.send({result:'ok',code:1,msg:'用户名或密码错误'});
+
+          }
+        console.log('user operate ok ' + util.inspect(userObj));
+      }
+  })
+})
+
 module.exports  = router;

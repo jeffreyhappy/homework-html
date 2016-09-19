@@ -19,7 +19,7 @@ export function initTodayData(todayList){
   return {type:TODAY_LIST,todayList}
 }
 export function initTodayDataAsyc(){
-  window.location.host;
+
   return dispatch=>{
     return fetch(apiHost+'/today_list')
         .then(response=>{
@@ -33,3 +33,29 @@ export function initTodayDataAsyc(){
         })
   }
 }
+
+import { browserHistory } from 'react-router'
+
+
+export function loginAsyc(username,psw){
+  return dispatch=>{
+    let loginUrl = apiHost + '/login?username='+username+'&psw='+psw;
+    return fetch(loginUrl)
+            .then(response=>{
+              console.log("initDataAsyc middle" + require('util').inspect(response, { depth: null }));
+              return response.json();
+            })
+            .then(result=>{
+              console.log("initDataAsyc end" + require('util').inspect(result, { depth: null }));
+              if (result.code == 0) {
+                alert('登陆成功')
+                // Go to /some/path.
+                browserHistory.push('/')
+              }else {
+                alert('登陆失败' + result.msg)
+              }
+              // Cookies.set('todo_user', value.todo.userid, { expires: 30 });
+              // dispatch(initTodayData(result.result));
+            })
+        }
+  }
