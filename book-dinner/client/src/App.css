@@ -22,6 +22,9 @@
     width:300px;
     margin: 0px auto;
 }
+.Text_left{
+  text-align: left;
+}
 
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
