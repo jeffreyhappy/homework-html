@@ -53,7 +53,7 @@ import fetch from 'isomorphic-fetch'
 import Cookies from 'js-cookie'
 
 
-var apiHost = "http://192.168.0.160:3333"
+var apiHost = "http://www.lixiangfei.top:3000"
 export function addTodoAsync(text){
   console.log("addTodoAsync start");
   return dispatch =>{
